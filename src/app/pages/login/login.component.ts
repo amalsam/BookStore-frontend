@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.services'; // Check path correctness
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.services';
+import { environment } from '../../../enviornments/environment';
  // Adjust path as needed
 
 @Component({
@@ -15,6 +16,7 @@ import { AuthService } from '../../services/auth.services';
   styleUrls: ['./login.component.css'] // Fixed styleUrl typo
 })
 export class LoginComponent {
+  private baseUrl = environment.apiBaseUrl;
   user = {
     email: '',
     password: ''
