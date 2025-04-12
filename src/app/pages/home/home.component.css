@@ -1,0 +1,105 @@
+/* styles.css (append to existing code) */
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 80px 20px;
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.action-buttons, .auth-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-login {
+    background: var(--primary-color);
+}
+
+.btn-register {
+    background: var(--accent-color);
+    color: var(--text-color);
+}
+
+.btn-logout {
+    background: var(--secondary-color);
+}
+
+.add-to-cart {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.buy-now {
+    background: var(--accent-color);
+    color: var(--text-color);
+}
+
+/* Books Section */
+.books-section {
+    padding: 60px 20px;
+    background: var(--light-bg);
+}
+
+.no-books {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .book-card {
+        padding: 15px;
+    }
+
+    .book-card img {
+        height: 150px;
+    }
+
+    .book-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .book-action-btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,49 @@
+<!-- home.component.html -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Bookstore</h1>
+    
+    <div *ngIf="isLoggedIn; else guestView">
+      <div class="authenticated-view">
+        <h2>Hello Book Lover!</h2>
+        <p>Browse our collection below or manage your cart.</p>
+        <div class="action-buttons">
+          <a routerLink="/cart" class="btn btn-secondary">View Cart</a>
+          <button class="btn btn-logout" (click)="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #guestView>
+      <div class="guest-view">
+        <h2>Discover Your Next Favorite Book</h2>
+        <p>Login or register to start shopping!</p>
+        <div class="auth-options">
+          <a routerLink="/login" class="btn btn-login">Login</a>
+          <a routerLink="/register" class="btn btn-register">Register</a>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<div class="books-section">
+  <h2>Our Book Collection</h2>
+  <div class="book-grid">
+    <div class="book-card" *ngFor="let book of books">
+      <img [src]="book.imageUrl" [alt]="book.title" />
+      <div class="book-info">
+        <h3 class="book-title">{{ book.title }}</h3>
+        <p class="book-author">by {{ book.author }}</p>
+        <p class="book-price">₹{{ book.price }}</p>
+      </div>
+      <div class="book-actions">
+        <button class="book-action-btn add-to-cart" (click)="addToCart(book.id)">Add to Cart</button>
+        <button class="book-action-btn buy-now" (click)="buyNow(book.id)">Buy Now</button>
+      </div>
+    </div>
+    <div *ngIf="books.length === 0" class="no-books">
+      <p>No books available at the moment.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .book-form {
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+  
+  .file-upload {
+    margin: 1rem 0;
+    
+    .upload-label {
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border: 2px dashed #ddd;
+      border-radius: var(--border-radius);
+      display: inline-block;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        border-color: var(--secondary-color);
+        background: rgba(52, 152, 219, 0.05);
+      }
+    }
+  }
+  
+  .image-preview {
+    margin-top: 1rem;
+    img {
+      max-width: 200px;
+      border-radius: var(--border-radius);
+      margin-right: 1rem;
+    }
+  }
+  
+  .book-card {
+    .book-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+  
+    .book-image {
+      max-width: 100px;
+      border-radius: 4px;
+    }
+  
+    .price {
+      font-weight: bold;
+      color: var(--success-color);
+    }
+  }

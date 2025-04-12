@@ -1,0 +1,42 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Brand/Logo -->
+    <a routerLink="/" class="brand">
+      📚 BookStore
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="nav-links">
+      <a routerLink="/" class="nav-link" routerLinkActive="active">Home</a>
+      <a routerLink="/books" class="nav-link" routerLinkActive="active">Books</a>
+      <div *ngIf="isAdmin" class="nav-link">
+        <a routerLink="/admin" class="admin-link" routerLinkActive="active">Admin</a>
+      </div>
+    </div>
+
+    <!-- Auth Section -->
+    <div class="auth-section">
+      <ng-container *ngIf="isLoggedIn; else loginSection">
+        <button class="btn btn-icon" (click)="logout()">
+          👋 Logout
+        </button>
+      </ng-container>
+      <ng-template #loginSection>
+        <a routerLink="/login" class="btn btn-primary">Login</a>
+        <a routerLink="/register" class="btn btn-secondary">Register</a>
+      </ng-template>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-btn" (click)="toggleMenu()">
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" [class.active]="isMenuOpen">
+    <a routerLink="/" class="mobile-nav-link" (click)="toggleMenu()">Home</a>
+    <a routerLink="/books" class="mobile-nav-link" (click)="toggleMenu()">Books</a>
+    <a *ngIf="isAdmin" routerLink="/admin" class="mobile-nav-link" (click)="toggleMenu()">Admin</a>
+  </div>
+</nav>

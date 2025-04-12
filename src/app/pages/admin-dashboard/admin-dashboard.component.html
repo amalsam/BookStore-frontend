@@ -1,0 +1,60 @@
+<!-- admin-dashboard.component.html -->
+<div class="admin-container">
+  <h2>Admin Dashboard - Manage Books</h2>
+
+  <!-- Error/Success Message -->
+  <div *ngIf="errorMessage" class="alert" [class.alert-danger]="errorMessage.includes('failed')" [class.alert-success]="!errorMessage.includes('failed')">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Add Book Form -->
+  <form (ngSubmit)="addBook()" class="add-book-form">
+    <div class="form-group">
+      <input type="text" [(ngModel)]="newBook.title" name="title" placeholder="Title" required />
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="newBook.author" name="author" placeholder="Author" required />
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="newBook.description" name="description" placeholder="Description" required />
+    </div>
+    <div class="form-group">
+      <input type="number" [(ngModel)]="newBook.price" name="price" placeholder="Price" min="0" step="0.01" required />
+    </div>
+    <div class="form-group">
+      <input type="number" [(ngModel)]="newBook.stock" name="stock" placeholder="Stock" min="0" required />
+    </div>
+    <div class="form-group">
+      <label for="isRequired">Display to Customers?</label>
+      <select [(ngModel)]="newBook.isRequired" name="isRequired" id="isRequired" required>
+        <option [value]="true">Yes</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" required />
+      <img *ngIf="newBook.imageUrl" [src]="newBook.imageUrl" alt="Book Preview" class="preview-image" />
+    </div>
+    <button type="submit" class="add-btn">Add Book</button>
+  </form>
+
+  <!-- Book List -->
+  <div class="book-grid">
+    <div class="book-card" *ngFor="let book of books">
+      <img *ngIf="book.imageUrl" [src]="book.imageUrl" [alt]="book.title" />
+      <div class="book-info">
+        <h3 class="book-title">{{ book.title }}</h3>
+        <p class="book-author">by {{ book.author }}</p>
+        <p class="book-price">₹{{ book.price }}</p>
+        <p class="book-stock">Stock: {{ book.stock }}</p>
+        <p class="book-visibility">Visible: {{ book.isRequired ? 'Yes' : 'No' }}</p>
+      </div>
+      <div class="book-actions">
+        <button class="book-action-btn delete" (click)="deleteBook(book.id)">Delete</button>
+      </div>
+    </div>
+    <div *ngIf="books.length === 0" class="no-books">
+      <p>No books available.</p>
+    </div>
+  </div>
+</div>
